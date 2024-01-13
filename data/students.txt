@@ -1,0 +1,6 @@
+Tycho Brahe 24 3.1
+Galileo Galilei 26 3.7
+Johannes Kepler 21 3.5
+Nicolaus Copernicus 19 2.9
+Charles Messier 24 2.3
+Christian Hugens 28 3.3
