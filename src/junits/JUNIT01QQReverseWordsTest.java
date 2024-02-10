@@ -23,8 +23,8 @@ public class JUNIT01QQReverseWordsTest {
     @Test
     void testReverseWords() throws FileNotFoundException {
 
-        String matchLocation    = "." + File.separator + "data"
-                                      + File.separator + "match_words.txt";
+        String matchLocation    = "." + File.separator + "results"
+                                      + File.separator + "reverse_words.txt";
 
         String inputLocation    = "." + File.separator + "data"
                                       + File.separator + "words.txt";
