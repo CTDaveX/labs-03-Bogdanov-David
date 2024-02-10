@@ -3,8 +3,6 @@ package lab01$arraylists;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -23,7 +21,7 @@ public class Test01ReverseWords {
             // Joining words back together
             String reversedLine = String.join(" ", wordsList);
             // Adding reversed lines to the beginning of the list to reverse their order
-            list.add(0, reversedLine);
+            list.addFirst(reversedLine);
         }
 
         scanner.close();
@@ -33,7 +31,7 @@ public class Test01ReverseWords {
         // ensuring the directory exists is handled in a separate method for clearer separation of concerns
         ensureDirectoryExists(outputLocation);
 
-        try (PrintStream printStream = new PrintStream(new File(outputLocation))) {
+        try (PrintStream printStream = new PrintStream(outputLocation)) {
             list.forEach(printStream::println);
         }
     }
