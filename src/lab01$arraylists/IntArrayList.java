@@ -30,7 +30,7 @@ import lab02$linkedlists.IntArrayIterator;
  */
 
 public class IntArrayList {
-    private int[] array;   //stores internal array of integers.
+    private final int[] array;   //stores internal array of integers.
     private int size;     //stores the number of elements in list.
 
     public static final int DEFAULT_CAPACITY = 10;
@@ -50,6 +50,7 @@ public class IntArrayList {
         array = new int[capacity];
         size  = 0;
     }
+
 
     /**
      * appends value to the end of the list.
@@ -76,28 +77,6 @@ public class IntArrayList {
         size++;
     }
 
-    /**
-     * appends another list to current list.
-     * @param other list
-     */
-    public void addAll(IntArrayList other){
-        //TODO: ensure the minimum capacity for the new list
-        for (int i = 0; i < other.size; i++) {
-            add(other.array[i]);
-        }
-    }
-
-    /**
-     * This is an example of a validation check!
-     * checks if the current index is valid.
-     * @param index of value
-     */
-    private void checkIndex(int index){
-        if(index < 0 || index >= size){
-            throw new IndexOutOfBoundsException("Invalid Index: " + index);
-        }
-    }
-
 
     /**
      * clears elements in list.
@@ -119,23 +98,6 @@ public class IntArrayList {
             }
         }
         return false;      //NOT FOUND
-    }
-
-    /**
-     * expands the size of the current list to a larger one if capacity has been
-     * exceeded.
-     * @param minCapacity of list.
-     */
-    public void ensureCapacity(int minCapacity){
-        if(minCapacity > array.length){
-            int newCapacity = Math.max(minCapacity, 2 * array.length + 1);
-            int[] newArray = new int[newCapacity];
-
-            for (int i = 0; i < size; i++) {
-                newArray[i] = array[i];
-            }
-            array = newArray;
-        }
     }
 
     /**
