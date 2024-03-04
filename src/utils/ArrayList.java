@@ -220,5 +220,36 @@ public class ArrayList<E> implements List<E> {
         return true;
     }
 
+    public Iterator<E> iterator() {
+        return new ArrayIterator();
+    }
 
+    private class ArrayIterator implements Iterator<E> {
+        private int index;
+
+        public ArrayIterator() {
+            index = 0;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return index < size();
+        }
+
+        @Override
+        public E next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+            return get(index++);
+        }
+
+        @Override
+        public void remove() {
+            if (index <= 0) {
+                throw new IllegalStateException();
+            }
+            ArrayList.this.remove(--index);
+        }
+    }
 }

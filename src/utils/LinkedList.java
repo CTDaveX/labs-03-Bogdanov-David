@@ -267,4 +267,43 @@ public class LinkedList<E> implements List<E> {
         return true;
     }
 
+    public Iterator<E> iterator() {
+        return new LinkedIterator();
+    }
+
+    private class LinkedIterator implements Iterator<E> {
+        private Node<E> current;
+        private Node<E> previous;
+
+        public LinkedIterator() {
+            current = first;
+            previous = null;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        @Override
+        public E next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+            E result = current.data;
+            previous = current;
+            current = current.next;
+            return result;
+        }
+
+        @Override
+        public void remove() {
+            if (previous == null) {
+                throw new IllegalStateException();
+            }
+            LinkedList.this.remove(previous.data);
+            previous = null;
+        }
+    }
+
 }

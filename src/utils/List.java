@@ -3,6 +3,7 @@ package utils;
 import java.util.NoSuchElementException;
 
 public interface List<E> {
+    Iterator<E> iterator();
     boolean add(E item);
     void add(int index, E item);
     boolean addAll(List<E> otherList);
