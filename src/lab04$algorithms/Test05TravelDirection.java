@@ -21,17 +21,18 @@ public class Test05TravelDirection {
         goNorthEast(endX, endY, startX, startY, "moves:");
     }
 
-    //FIXME: Update the body implementation to print the correct route specified
-    //       in the assignment
     private static void goSouthWest(int endX, int endY, int x, int y, String route) {
-        //TODO: update method body with recursive expression for South West
-
+        if (x == endX && y == endY) {
+            System.out.println(route);
+        } else if (x >= endX && y >= endY) {
+            goSouthWest(endX, endY, x, y - 1, route + " S");
+            goSouthWest(endX, endY, x - 1, y, route + " W");
+            goSouthWest(endX, endY, x - 1, y - 1, route + " SW");
+        }
     }
 
-    //FIXME: Update the body implementation to print the correct route specified
-    //       in the assignment
     public static void goSouthWest(int endX, int endY, int startX, int startY) {
-        //TODO: update method body to use private helper method
+        goSouthWest(endX, endY, startX, startY, "moves:");
     }
 
     public static void intro(){
@@ -52,7 +53,9 @@ public class Test05TravelDirection {
 
     public static void main(String[] args) {
         intro();
-        goNorthEast(1,2, 0, 0);
+        goNorthEast(1, 2, 0, 0);
+        System.out.println();
+        goSouthWest(-2, 1, 0, 0);
         System.out.println();
     }
 }

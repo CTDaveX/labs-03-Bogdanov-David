@@ -7,24 +7,40 @@ package lab04$algorithms;
  *******************************************************************************/
 public class Test02Fibonacci {
 
-    public static long fib(int n) {
-        //TODO : COMPLETE BODY OF RECURSIVE METHOD
-        return 0;
+    public static int fib(int n) {
+        if (n <= 1) {
+            return n;
+        }
+        return fib(n - 1) + fib(n - 2);
     }
 
-    public static long ifib(int n) {
-        //TODO : COMPLETE BODY OF ITERATIVE METHOD
-        return 0;
+    public static int ifib(int n) {
+        if (n <= 1) {
+            return n;
+        }
+        int a = 0, b = 1, c;
+        for (int i = 2; i <= n; i++) {
+            c = a + b;
+            a = b;
+            b = c;
+        }
+        return b;
     }
 
-    public static long mfib(int n) {
-        //TODO : COMPLETE BODY OF MEMOIZATION METHOD
-        return 0;
+    public static int mfib(int n) {
+        int[] memo = new int[n + 1];
+        return memo(n, memo);
     }
 
-    private static long memo(int n, int[] x) {
-        //TODO : COMPLETE BODY OF MEMOIZATION HELPER METHOD
-        return 0;
+    private static int memo(int n, int[] memo) {
+        if (n <= 1) {
+            return n;
+        }
+        if (memo[n] != 0) {
+            return memo[n];
+        }
+        memo[n] = memo(n - 1, memo) + memo(n - 2, memo);
+        return memo[n];
     }
 
 
